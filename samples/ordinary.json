@@ -1,0 +1,10 @@
+{
+  "volume_id": "day-41",
+  "revision_id": "R1",
+  "rounds": [
+    {"executed": true, "probes": [
+      {"name": "P1", "reading": 0, "status": "合格"},
+      {"name": "P2", "reading": 21, "status": "复检"}
+    ]}
+  ]
+}

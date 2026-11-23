@@ -1,0 +1,27 @@
+{
+  "source": {"volume_id": "band-26", "revision_id": "R1", "rounds": [
+    {"executed": true, "probes": []},
+    {"executed": true, "probes": [
+      {"name": "A", "reading": 17, "status": null},
+      {"name": "A", "reading": null, "status": "复检"}
+    ]},
+    {"executed": false, "probes": []},
+    {"executed": true, "probes": [{"name": "B", "reading": 0, "status": "合格"}]}
+  ]},
+  "cut": 2,
+  "protected": ["B", "C"],
+  "losses": ["AB", "CD", "AC", "BD", "BC"],
+  "expected": [
+    {"band": 1, "rounds": [
+      {"round_number": 1, "executed": true, "probes": []},
+      {"round_number": 2, "executed": true, "probes": [
+        {"name": "A", "reading": 17, "status": null},
+        {"name": "A", "reading": null, "status": "复检"}
+      ]}
+    ], "reading_count": 1, "status_count": 1, "recheck_positions": [[2, 2]]},
+    {"band": 2, "rounds": [
+      {"round_number": 3, "executed": false, "probes": []},
+      {"round_number": 4, "executed": true, "probes": [{"name": "B", "reading": 0, "status": "合格"}]}
+    ], "reading_count": 1, "status_count": 1, "recheck_positions": []}
+  ]
+}

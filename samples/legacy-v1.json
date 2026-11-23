@@ -1,0 +1,16 @@
+[
+  {
+    "version": 1,
+    "frozen_number": "ARCHIVE-004",
+    "column": "reading",
+    "artifact_id": "ARCHIVE-004/reading",
+    "payload": {"layout": "single-round", "records": [["D", 8], ["D", null]]}
+  },
+  {
+    "version": 1,
+    "frozen_number": "ARCHIVE-004",
+    "column": "status",
+    "artifact_id": "ARCHIVE-004/status",
+    "payload": {"layout": "single-round", "records": [["D", "复检"], ["D", "合格"]]}
+  }
+]
