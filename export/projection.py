@@ -1,3 +1,4 @@
+from export.bands import build_issuance, normalize_cut, normalize_protected
 from export.catalog import ArtifactCatalog
 from export.envelope import V1Envelope, encode_envelope
 from export.identity import READING_COLUMN, make_artifact_id, validate_column
@@ -28,3 +29,15 @@ def export_column(frozen: FrozenCatalog, artifacts: ArtifactCatalog, frozen_numb
         return issued
     envelope = project_column(frozen.get(frozen_number), column)
     return artifacts.save_or_get(encode_envelope(envelope))
+
+
+def export_bands(frozen: FrozenCatalog, artifacts: ArtifactCatalog, frozen_number: str,
+                 cut: object, protected: object) -> tuple[bytes, dict[str, dict]]:
+    volume = frozen.get(frozen_number)
+    cut = normalize_cut(cut, len(volume.content.rounds))
+    protected = normalize_protected(protected)
+    saved = artifacts.get_band_issuance(frozen_number, cut, protected)
+    if saved is not None:
+        return saved
+    manifest, blocks = build_issuance(volume, cut, protected)
+    return artifacts.save_band_issuance(frozen_number, cut, protected, manifest, blocks)

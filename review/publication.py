@@ -2,10 +2,13 @@ from collections.abc import Callable
 
 from receive.catalog import IntakeCatalog
 from receive.selection import select_pair
+from review.bands import review_bands
 from review.catalog import PublishedReport, ReportCatalog
 from review.reconstruct import reconstruct_volume
 from review.report import build_report_snapshot
 from review.totals import calculate_totals
+
+__all__ = ['review_bands', 'review_volume']
 
 
 def review_volume(intake: IntakeCatalog, reports: ReportCatalog, frozen_number: str,
